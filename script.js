@@ -3,36 +3,57 @@ let form = document.getElementById("add-form");
 let creating = true;
 let currentSection;
 
-const host = "http://localhost:8000";
-
+axios.defaults.baseURL = "http://localhost:8000";
+axios.interceptors.response.use((r) => {
+  console.log(r);
+  return r.data;
+});
 
 // ------------------------ API Calls ------------------------
 const goToStudents = () => {
-  // GET
-  setCurrentSection("students");
-  // draw cards
+  axios
+    .get(`/students`)
+    .then((res) => {
+      setCurrentSection("students");
+      drawCards(res);
+    })
+    .catch((e) => showPopup(e));
 };
 
 const goToInstructors = () => {
-  // GET
-  setCurrentSection("instructors");
-  // draw cards
+  axios
+    .get(`/instructors`)
+    .then((res) => {
+      setCurrentSection("instructors");
+      drawCards(res);
+    })
+    .catch((e) => showPopup(e));
 };
 
 const goToLeadInstructors = () => {
-	// GET
-	setCurrentSection("leadInstructors");
-	// draw cards
+  axios
+    .get(`/leadInstructors`)
+    .then((res) => {
+      setCurrentSection("leadInstructors");
+      drawCards(res);
+    })
+    .catch((e) => showPopup(e));
 };
 
 const deleteElement = (id) => {
-	// DELETE
-	/* showPopup(currentSection === "students" ? "🎓 Congrats! 🎓" : "🔥 fired 🔥");
-	deleteCard(`${currentSection}-${id}`) */
+  axios
+    .delete(`/${currentSection}/${id}`)
+    .then(() => {
+      showPopup(
+        currentSection === "students" ? "🎓 Congrats! 🎓" : "🔥 fired 🔥"
+      );
+      deleteCard(`${currentSection}-${id}`);
+    })
+    .catch((e) => showPopup(e));
 };
 
-const submitForm = (e) => {
-  e.preventDefault();
+const submitForm = (event) => {
+  event.preventDefault();
   const data = {
     fullName: formValue("fullName"),
     nickname: formValue("nickname"),
@@ -46,26 +67,37 @@ const submitForm = (e) => {
 };
 
 const edit = (data, id) => {
-	// PUT
-	/* deleteCard(`${currentSection}-${id}`);
-	drawCard(element);
-	form.reset(); 
-	creating = true
-	setFormSubmitLabel()*/
+  axios
+    .put(`/${currentSection}/${id}`, data)
+    .then((res) => {
+      deleteCard(`${currentSection}-${id}`);
+      drawCard(res);
+      form.reset();
+      creating = true;
+      setFormSubmitLabel();
+    })
+    .catch((e) => showPopup(e));
 };
 
 const create = (data) => {
-	// POST
-	/* drawItem(element);
-	drawCard(element);
-	form.reset(); 
-	setFormSubmitLabel()*/
+  axios
+    .post(`/${currentSection}`, data)
+    .then((res) => {
+      drawCard(res);
+      form.reset();
+      setFormSubmitLabel();
+    })
+    .catch((e) => showPopup(e));
 };
 
 const showEditElement = (id) => {
-	// GET
-	/* fillFormData(element);
-	showForm(); */
+  axios
+    .get(`/${currentSection}/${id}`)
+    .then((res) => {
+      fillFormData(res);
+      showForm();
+    })
+    .catch((e) => showPopup(e));
 };
 
 // ------------------------- DOM manipulation -------------------------
