@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ironhack 202011</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>🌟Ironhack 202011🌟</h1>
+      <nav>
+        <button id="students" onclick="goToStudents()">students</button>
+        <button id="instructors" onclick="goToInstructors()">
+          instructors
+        </button>
+        <button id="leadInstructors" onclick="goToLeadInstructors()">
+          lead_instructors
+        </button>
+      </nav>
+      <form id="add-form" class="hidden">
+        <div class="form-group" style="display: none">
+          <input name="id" id="id" />
+        </div>
+        <div class="form-group">
+          <label for="fullName">Name</label>
+          <input name="fullName" id="fullName" />
+        </div>
+        <div class="form-group">
+          <label for="nickname">Nick</label>
+          <input name="nickname" id="nickname" />
+        </div>
+        <div class="form-group">
+          <label for="drink">Bebida</label>
+          <input name="drink" id="drink" />
+        </div>
+        <div class="form-group">
+          <label for="meal">Comida</label>
+          <input name="meal" id="meal" />
+        </div>
+        <div class="form-group">
+          <label for="pet">Mascota</label>
+          <input name="pet" id="pet" />
+        </div>
+        <div class="form-group">
+          <label for="feeling">Feeling</label>
+          <input name="feeling" id="feeling" />
+        </div>
+        <div class="form-group">
+          <label for="reason">Xq</label>
+          <input name="reason" id="reason" />
+        </div>
+        <button type="submit" class="submit" onclick="submitForm(event)">create</button>
+        <button onclick="hideForm(event)">hide</button>
+      </form>
+      <section id="data-wrapper"></section>
+      <button class="add" onclick="showEmptyForm(event)">➕</button>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>

@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    margin: 15px 0px;
+    background-color: #59d5fd;
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding: 20px;
+    width: 80vw;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    min-height: 95vh;
+}
+
+h1,
+h2,
+nav {
+    text-align: center;
+    margin-top: 0;
+}
+
+nav > button {
+	margin-top: 5px;
+}
+
+button {
+    position: relative;
+    font-family: inherit;
+    padding: 5px 15px;
+    border: none;
+    background-color: #54cfff;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    top: 0;
+    transition: top 0.2s, box-shadow 0.2s;
+}
+
+.card > button + button { 
+	margin-left: 5px;
+}
+
+button:hover, button:focus {
+    top: 2px;
+    box-shadow: none;
+	text-decoration: underline;
+	outline: none;
+}
+
+button.current {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+button.add {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    top: unset;
+    background-color: white;
+    color: black;
+    padding: 8px 10px;
+    border-radius: 50%;
+}
+
+#instructors {
+    background-color: #4b99b8;
+}
+
+#leadInstructors {
+    background-color: #143f50;
+}
+
+#add-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 135px;
+    padding: 10px;
+    margin: 30px 0;
+}
+
+#add-form input {
+    padding: 3px 10px;
+    border-radius: 8px;
+	border: 1px solid lightblue;
+	outline: none;
+}
+
+#data-wrapper {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card {
+    width: 250px;
+    margin: 10px;
+    border: 1px solid lightblue;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.popup {
+    position: fixed;
+    top: 25px;
+    padding: 15px;
+    right: -100%;
+    margin-right: 15px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.4);
+    border-radius: 25px;
+    animation: in 1s forwards, out 1s 5s forwards;
+    background-color: rgb(255, 109, 143);
+    color: white;
+}
+
+#add-form.hidden {
+    display: none;
+}
+
+.form-group {
+    margin: 5px 0;
+}
+
+@keyframes in {
+    0% {
+        right: -100%;
+    }
+
+    100% {
+        right: 0;
+    }
+}
+
+@keyframes out {
+    0% {
+        right: 0;
+    }
+
+    100% {
+        right: -100%;
+    }
+}
