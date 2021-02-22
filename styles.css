@@ -5,7 +5,8 @@
 body {
     font-family: monospace;
     margin: 15px 0px;
-    background-color: #59d5fd;
+    background-color: #111111;
+    color: red;
 }
 
 .wrapper {
