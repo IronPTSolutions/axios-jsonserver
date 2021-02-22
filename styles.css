@@ -6,6 +6,7 @@ body {
     font-family: monospace;
     margin: 15px 0px;
     background-color: #d3d2ff;
+    color: red;
 }
 
 .wrapper {
